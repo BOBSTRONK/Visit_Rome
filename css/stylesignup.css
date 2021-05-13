@@ -1,0 +1,48 @@
+html,
+body,
+header,
+.view {
+  height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 1000px;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 650px;
+  }
+}
+
+.card {
+  background-color: rgba(126, 123, 215, 0.2);
+}
+
+.md-form label {
+  color: #ffffff;
+}
+
+h6 {
+  line-height: 1.7;
+}
+
+.borders {
+  border-style: dotted;
+  color: #ffffff;
+}
+
+.trasparent {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.whitetext {
+  color: white;
+  font-weight: bolder;
+}
