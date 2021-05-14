@@ -1,0 +1,43 @@
+.information {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 100, 0.2);
+  text-align: left;
+}
+h5 {
+  position: relative;
+  left: 80px;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+.p-container {
+  margin: 0px 27px;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.info-container {
+  border: solid 3px #333333;
+  padding: 0px;
+}
+
+.info-text {
+  background-color: #333333;
+  padding: 0px;
+  color: white;
+  font-weight: bold;
+  padding: 0px 27px;
+  margin-bottom: 0px;
+}
+
+.info-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding-top: 10px;
+  margin: 0px 27px;
+}
+
+.info-in {
+  margin: 0px 27px;
+}
