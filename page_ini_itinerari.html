@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Itinerari</title>
     <!-- loading jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- favicon -->
@@ -126,10 +126,23 @@
             <div class="itinerari-review">
               <div class="card">
                 <img
-                  class="img-fluid"
+                  class="img-fluid modal-btn"
                   style="height: 235px"
                   src="image/info_coloseo.jpg"
                 />
+                <div class="modal my-modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2>Attenzione</h2>
+                      <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <h4>
+                        Deve effettuare il login per visualizzare il contenuto
+                      </h4>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <p>Itinerari in 24 Ore</p>
                 </div>
@@ -140,10 +153,24 @@
             <div class="itinerari-review">
               <div class="card">
                 <img
+                  class="modal-btn"
                   class="img-fluid"
                   style="height: 235px"
                   src="image/fontana_iti.jpg"
                 />
+                <div class="modal my-modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2>Attenzione</h2>
+                      <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <h4>
+                        Deve effettuare il login per visualizzare il contenuto
+                      </h4>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <p>Itinerari in 48 Ore</p>
                 </div>
@@ -154,10 +181,24 @@
             <div class="itinerari-review">
               <div class="card">
                 <img
+                  class="modal-btn"
                   class="img-fluid"
                   style="height: 235px"
-                  src="image/info_coloseo.jpg"
+                  src="image/fontana_iti.jpg"
                 />
+                <div class="modal my-modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2>Attenzione</h2>
+                      <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <h4>
+                        Deve effettuare il login per visualizzare il contenuto
+                      </h4>
+                    </div>
+                  </div>
+                </div>
                 <div class="card-body">
                   <p>Itinerari in 72 Ore</p>
                 </div>
@@ -184,5 +225,6 @@
         © Copyright 2021 C&J's.Inc
       </p>
     </footer>
+    <script src="js/multimodals.js" charset="utf-8"></script>
   </body>
 </html>

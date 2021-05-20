@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Itinerari in 48 Ore</title>
+    <!-- loading jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- favicon -->
+    <link rel="icon" href="/favicon (2).ico" />
+    <!-- bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <!-- my css for header and footer -->
+    <link rel="stylesheet" type="text/css" href="/css/style3.css" />
+    <!-- my css for  itinerari -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <!-- font-awesome -->
+    <script
+      src="https://kit.fontawesome.com/7091884191.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- bootstrap scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-md-12 navbar navbar-expand-md navbar-dark bg-dark"
+          style="padding-top: 15px; padding-bottom: 15px"
+        >
+          <a
+            href="/"
+            class="logo navbar-brand text-white offset-md-2"
+            style="margin-left: 50px"
+            >Logo</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav ml-auto" style="margin-right: 30px">
+              <li class="nav-item">
+                <a href="/" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                <a href="/itinerari" class="nav-link">Itinerari</a>
+              </li>
+              <li class="nav-item">
+                <a href="/aboutus" class="nav-link">About Us</a>
+              </li>
+              <li class="nav-item" style="padding: 5px 0 0 20px">
+                <img
+                  id="modal-btn"
+                  style="width: 25px"
+                  src="/image/User_Avatar_2.png"
+                  alt=""
+                />
+                <div id="my-modal" class="modal">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h2 style="color: white">User information</h2>
+                      <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                      <p>First Name: <%= firstName %></p>
+                      <p>Last Name: <%= lastName %></p>
+                      <p>Username: <%= username %></p>
+                      <a
+                        class="btn btn-dark btn-md"
+                        style="float: right"
+                        href="/logout"
+                        role="button"
+                        >Log Out</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- time line -->
+    <h1 style="padding: 10px">Primo giorno</h1>
+    <div class="timeline">
+      <div class="container container-left">
+        <a href="/colosseo">
+          <div
+            class="image"
+            style="background-image: url(/image/colosseo.png)"
+          ></div
+        ></a>
+        <div class="content">
+          <span>prima tappa</span>
+          <h2>il Colosseo</h2>
+          <p>
+            Non appena usciti dalla metro B, sarete abbagliati da una
+            straordinaria opera architettonica: il Colosseo. Il biglietto valido
+            24h, permette un solo ingresso al Colosseo e un solo ingresso
+            all’area archeologica del Foro Romano-Palatino, incluse le mostre in
+            corso.
+          </p>
+        </div>
+      </div>
+      <div class="container container-right">
+        <a href="/Fororomano"
+          ><div
+            class="image"
+            style="background-image: url(/image/ForoRomano.png)"
+          ></div
+        ></a>
+        <div class="content">
+          <span>seconda tappa</span>
+          <h2>il Foro Romano</h2>
+          <p>
+            Terminata la visita, potrete raggiungere la collina Capitolina dalla
+            zona nord del foro. Arrivando a
+            <strong>Piazza del Campidoglio</strong>, non perdetevi la statua di
+            Romolo e Remo. Uscendo dal Foro puoi incamminarti per via Cavour e
+            addentrarti nello storico Rione Monti, antico quartiere popolare.
+          </p>
+        </div>
+      </div>
+      <div class="container container-left">
+        <a href="/Piazzavenezia">
+          <div
+            class="image"
+            style="background-image: url(/image/piazzavenezia.png)"
+          ></div
+        ></a>
+        <div class="content">
+          <span>terza tappa</span>
+          <h2>Piazza Venezia</h2>
+          <p>
+            Dopo il break puoi proseguire lungo via dei Fori Imperiali e salire
+            sul <strong>colle del Campidoglio</strong> per godere di una vista
+            unica sul Foro romano e ammirare la scenografica piazza disegnata da
+            Michelangelo. Avendo tempo è consigliata la visita ai Musei
+            Capitolini. Scendi per la scalinata e a pochi metri trovi piazza
+            Venezia caratterizzata dal grande monumento bianco, l’Altare della
+            Patria e dal quattrocentesco Palazzo Venezia.
+          </p>
+        </div>
+      </div>
+    </div>
+    <h1 style="padding: 10px">Secondo giorno</h1>
+    <div class="timeline">
+      <a href="/Piazzaspagna">
+      <div class="container container-right">
+        <div
+          class="image"
+          style="background-image: url('/image/Spagna.png')"
+        ></div></a>
+        <div class="content">
+          <span>prima tappa</span>
+          <h2>Piazza Spagna</h2>
+          <p>
+            Potrete prendere la metro per arrivare a Piazza di Spagna: la sua
+            famosa scalinata e l’atmosfera della piazza vi daranno un benvenuto
+            straordinario! Da questo momento in poi il percorso continuerà a
+            piedi. Attraverserete Via Condotti (una delle strade commerciali più
+            importanti) fino ad arrivare a Via del Corso.
+          </p>
+        </div>
+      </div>
+      <div class="container container-left">
+        <a href="/Fontana">
+        <div
+          class="image"
+          style="background-image: url(/image/Fontana.png)"
+        ></div></a>
+        <div class="content">
+          <span>seconda tappa</span>
+          <h2>la Fontana di Trevi</h2>
+          <p>
+            Svoltando a sinistra e camminando per questa strada, arriverete a
+            Piazza Colonna (dove si trova la Colonna di Marco Aurelio) e, due
+            strade più avanti, imboccherete sulla sinistra Via delle Muratte. A
+            pochi metri vedrete una delle immagine che mai più potrete
+            dimenticare: la Fontana di Trevi. Un luogo straordinario dove
+            fermarsi qualche minuto e, se credete nella leggenda, potrete
+            gettare in acqua una moneta.
+          </p>
+        </div>
+      </div>
+      <div class="container container-right">
+        <a href="/Pantheon">
+        <div
+          class="image"
+          style="background-image: url('/image/Pantheon.png')"
+        ></div></a>
+        <div class="content">
+          <span>terza tappa</span>
+          <h2>il Pantheon</h2>
+          <p>
+            Tornando indietro verso Via delle Muratte, incrocerete Via del Corso
+            e continuerete per Via di Pietra. In soli 5 minuti raggiungerete il
+            Pantheon, l’edificio meglio conservato dell’Impero Romano. Potrete
+            riposarvi assaporando un ottimo caffè in uno dei bar della piazza.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <footer class="w-section" id="footer">
+      <i class="fab fa-twitter download-class2"></i>
+      <i class="fab fa-facebook-f download-class2"></i>
+      <i class="fab fa-instagram download-class2"></i>
+      <i class="fas fa-envelope download-class2"></i>
+      <p
+        style="
+          size: 12;
+          text-align: center;
+          color: #fff;
+          font-family: Arial, Helvetica, sans-serif;
+          margin-bottom: 0px;
+        "
+      >
+        © Copyright 2021 C&J's.Inc
+      </p>
+    </footer>
+  </body>
+  <script src="/js/openmodal.js" charset="utf-8"></script>
+</html>

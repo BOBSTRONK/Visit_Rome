@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign-</title>
+    <title>Sign-Up</title>
+
     <!-- loading jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- favicon -->
@@ -123,12 +124,14 @@
                 Sign up right now!
               </h1>
               <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
-              <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                repellendus quasi fuga nesciunt dolorum nulla magnam veniam
-                sapiente, fugiat! Commodi sequi non animi ea dolor molestiae,
-                quisquam iste, maiores. Nulla.
-              </h6>
+              <h4
+                class="mb-3 wow"
+                style="text-align: center"
+                data-wow-delay="0.3s"
+              >
+                Crea un account per accedere alla sezione ITINERARI che ti aiuta
+                a godere la bellezza di Roma.
+              </h4>
             </div>
             <!--Grid column-->
             <!--Grid column-->
@@ -142,7 +145,11 @@
             >
               <!--Form-->
               <!--Body-->
-              <form class="text-center border borders p-5" action="#!">
+              <form
+                class="text-center border borders p-5"
+                action="/signup"
+                method="POST"
+              >
                 <p class="h3 mb-4 whitetext">Sign up</p>
 
                 <div class="form-row mb-4">
@@ -152,6 +159,8 @@
                       type="text"
                       id="defaultRegisterFormFirstName"
                       class="form-control"
+                      name="firstName"
+                      required
                       placeholder="First name"
                     />
                   </div>
@@ -160,6 +169,8 @@
                     <input
                       type="text"
                       id="defaultRegisterFormLastName"
+                      name="lastName"
+                      required
                       class="form-control"
                       placeholder="Last name"
                     />
@@ -170,6 +181,8 @@
                 <input
                   type="email"
                   id="defaultRegisterFormEmail"
+                  name="username"
+                  required
                   class="form-control mb-4"
                   placeholder="E-mail"
                 />
@@ -178,7 +191,9 @@
                 <input
                   type="password"
                   id="defaultRegisterFormPassword"
-                  class="form-control"
+                  name="password"
+                  required
+                  class="form-control password"
                   placeholder="Password"
                   aria-describedby="defaultRegisterFormPasswordHelpBlock"
                 />
@@ -186,37 +201,24 @@
                   id="defaultRegisterFormPasswordHelpBlock"
                   class="form-text whitetext mb-4"
                 >
-                  At least 8 characters and 1 digit
+                  Reconmended at least 8 characters and 1 digit
                 </small>
 
-                <!-- Phone number -->
+                <!-- confirm password -->
                 <input
-                  type="text"
-                  id="defaultRegisterPhonePassword"
-                  class="form-control"
-                  placeholder="Phone number"
+                  type="password"
+                  required
+                  id="RegisterPhonePassword"
+                  class="form-control confirmPassword"
+                  placeholder="confirm Password"
                   aria-describedby="defaultRegisterFormPhoneHelpBlock"
                 />
                 <small
                   id="defaultRegisterFormPhoneHelpBlock"
                   class="form-text whitetext mb-4"
                 >
-                  Optional - for two step authentication
+                  Like Before
                 </small>
-
-                <!-- Newsletter -->
-                <div class="custom-control custom-checkbox">
-                  <input
-                    type="checkbox"
-                    class="custom-control-input"
-                    id="defaultRegisterFormNewsletter"
-                  />
-                  <label
-                    class="custom-control-label whitetext"
-                    for="defaultRegisterFormNewsletter"
-                    >Subscribe to our newsletter</label
-                  >
-                </div>
 
                 <!-- Sign up button -->
                 <button
@@ -230,7 +232,12 @@
                 <!-- Terms of service -->
                 <p style="color: white; font-weight: bold">
                   By clicking <em>Sign up</em> you agree to our
-                  <a href="" target="_blank">terms of service</a>
+                  <a
+                    href="https://www.websitepolicies.com/blog/sample-terms-service-template
+"
+                    target="_blank"
+                    >terms of service</a
+                  >
                 </p>
               </form>
               <!--/.Form-->
@@ -244,5 +251,18 @@
       <!-- Mask & flexbox options-->
     </div>
     <!-- Full Page Intro -->
+    <script src="js/multimodals.js" charset="utf-8"></script>
+    <script>
+      document.querySelector(".btn").onclick = function () {
+        var password = document.querySelector(".password").value;
+        var confirmPassword = document.querySelector(".confirmPassword").value;
+
+        if (password != confirmPassword) {
+          window.alert("Password didn't match try again.");
+          return false;
+        }
+        return true;
+      };
+    </script>
   </body>
 </html>
