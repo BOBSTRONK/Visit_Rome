@@ -311,3 +311,24 @@ h1 {
     opacity: 1;
   }
 }
+
+.btn-monu{
+  width:150px;
+  padding: 10px 0;
+  outline: none;
+  border: 0;
+  border-radius: 2px;
+  position: absolute;
+  background: #fff;
+  left: 50%;
+  bottom:0;
+  transform: translate(-50%,0);
+  transition: .6s;
+  opacity:0;
+}
+
+.monu-img:hover .btn-monu{
+  transform: translate(-50%,50%);
+  bottom: 50%;
+  opacity: 1;
+}

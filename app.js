@@ -7,6 +7,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const _ = require("lodash");
 const session = require("express-session");
 const passportLocalMongoose = require("passport-local-mongoose");
@@ -25,7 +26,8 @@ app.use(
   session({
     secret: "Our little secret.",
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    coockie: { maxAge: 3600000 }
   })
 );
 
@@ -49,8 +51,15 @@ const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   username: String,
-  password: String
+  password: String,
 });
+
+const commentSchema=new mongoose.Schema({
+  user: String,
+  commenti: String
+});
+
+const Comment = mongoose.model("Comment",commentSchema);
 
 const monumentiSchema = new mongoose.Schema({
   name: String,
@@ -63,7 +72,8 @@ const monumentiSchema = new mongoose.Schema({
   durata: String,
   Link_1: String,
   Link_2: String,
-  frame: String
+  frame: String,
+  comments:[commentSchema]
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -75,6 +85,7 @@ const Monumenti = mongoose.model("Monumenti", monumentiSchema);
 const User = mongoose.model("User", userSchema);
 
 passport.use(User.createStrategy());
+
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
@@ -180,56 +191,6 @@ app.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-app.get("/:monuName", function (req, res) {
-  const monuName = _.capitalize(req.params.monuName);
-  // localhost:3000/colosseo ,req.params.customlistname=colosseo
-  const _LoggedIn = req.isAuthenticated() ? true : false;
-  if (_LoggedIn) {
-    Monumenti.findOne({ name: monuName }, function (err, foundMonu) {
-      if (!err) {
-        if (foundMonu) {
-          res.render("monumenti_logged", {
-            firstName: req.user.firstName,
-            lastName: req.user.lastName,
-            username: req.user.username,
-            title: foundMonu.title,
-            image: foundMonu.image,
-            descriptions: foundMonu.decription,
-            indirizzo: foundMonu.indirizzo,
-            orari: foundMonu.Orari,
-            costo: foundMonu.costo,
-            durata: foundMonu.durata,
-            Link_1: foundMonu.Link_1,
-            Link_2: foundMonu.Link_2,
-            frame: foundMonu.frame
-          });
-        }
-      }
-    });
-  } else {
-    Monumenti.findOne({ name: monuName }, function (err, foundMonu) {
-      if (!err) {
-        // se senza error
-        if (foundMonu) {
-          // se monumenti sono stati trovati
-          res.render("monumenti", {
-            title: foundMonu.title,
-            image: foundMonu.image,
-            descriptions: foundMonu.decription,
-            indirizzo: foundMonu.indirizzo,
-            orari: foundMonu.Orari,
-            costo: foundMonu.costo,
-            durata: foundMonu.durata,
-            Link_1: foundMonu.Link_1,
-            Link_2: foundMonu.Link_2,
-            frame: foundMonu.frame
-          });
-        }
-      }
-    });
-  }
-});
-
 app.post("/signup", function (req, res) {
   const newUser = new User({
     firstName: req.body.firstName,
@@ -264,6 +225,100 @@ app.post("/login", function (req, res) {
     }
   });
 });
+
+app.get("/:monuName", function (req, res) {
+  const monuName = _.capitalize(req.params.monuName);
+  // localhost:3000/colosseo ,req.params.customlistname=colosseo
+  const _LoggedIn = req.isAuthenticated() ? true : false;
+  if (_LoggedIn) {
+    Monumenti.findOne({ name: monuName }, function (err, foundMonu) {
+      if (!err) {
+        if (foundMonu) {
+          User.find({"commenti":{$ne:null}},function(err,foundUsers){
+            if(err){
+              console.log(err);
+            }else{
+              if(foundUsers){
+            res.render("monumenti_logged", {
+            firstName: req.user.firstName,
+            lastName: req.user.lastName,
+            username: req.user.username,
+            title: foundMonu.title,
+            image: foundMonu.image,
+            descriptions: foundMonu.decription,
+            indirizzo: foundMonu.indirizzo,
+            orari: foundMonu.Orari,
+            costo: foundMonu.costo,
+            durata: foundMonu.durata,
+            Link_1: foundMonu.Link_1,
+            Link_2: foundMonu.Link_2,
+            frame: foundMonu.frame,
+            usersWithComments:foundMonu.comments,
+            monuN:monuName
+          });
+              }
+            }
+          })
+        }
+      }
+    });
+  } else {
+    Monumenti.findOne({ name: monuName }, function (err, foundMonu) {
+      if (!err) {
+        // se senza error
+        if (foundMonu) {
+          // se monumenti sono stati trovati
+           User.find({"commenti":{$ne:null}},function(err,foundUsers){
+            if(err){
+              console.log(err);
+            }else{
+              if(foundUsers){
+            res.render("monumenti", {
+            title: foundMonu.title,
+            image: foundMonu.image,
+            descriptions: foundMonu.decription,
+            indirizzo: foundMonu.indirizzo,
+            orari: foundMonu.Orari,
+            costo: foundMonu.costo,
+            durata: foundMonu.durata,
+            Link_1: foundMonu.Link_1,
+            Link_2: foundMonu.Link_2,
+            frame: foundMonu.frame,
+            usersWithComments:foundMonu.comments
+          });
+              }
+            }
+          })
+        }
+      }
+    });
+  }
+});
+
+app.post("/:monuName",function(req,res){
+  const monuName = _.capitalize(req.body.Monu);
+  const submittedComment=req.body.comment;
+  User.findById(req.user.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+    }else{
+      if(foundUser){
+        Monumenti.findOne({ name: monuName }, function(err,foundMonu){
+          const commente = new Comment({
+            user:foundUser.lastName,
+            commenti:submittedComment
+          })
+          foundMonu.comments.push(commente);
+          foundMonu.save(function(){
+          res.redirect("/" + monuName);
+        })
+        })
+      }
+    }
+  })
+})
+
+
 
 app.listen(3000, function () {
   console.log("server started on port 3000");

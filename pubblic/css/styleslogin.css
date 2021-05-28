@@ -11,7 +11,6 @@ on the container’s size */
   background-attachment: fixed;
   /* Background image is fixed in the viewport so that it doesn’t move when the content’s height is greater than the image’s height */
   height: 100%;
-  font-family: "Numans", sans-serif;
 }
 
 .container {

@@ -21,6 +21,8 @@
 
     <!-- css for monu -->
     <link rel="stylesheet" type="text/css" href="css/styleMonu.css" />
+    <!-- css per comments -->
+    <link rel="stylesheet" type="text/css" href="css/comment.css">
     <!-- font-awesome -->
     <script
       src="https://kit.fontawesome.com/7091884191.js"
@@ -56,7 +58,7 @@
             href="/"
             class="logo navbar-brand text-white offset-md-2"
             style="margin-left: 50px"
-            >Logo</a
+            >VIROM</a
           >
           <button
             class="navbar-toggler"
@@ -154,6 +156,28 @@
         </div>
       </div>
     </div>
+<div class="container">
+<div class="be-comment-block">
+    <h1 class="comments-title">Comments</h1>
+    <div class="be-comment">
+      <%usersWithComments.forEach(function(comments){ %>
+        <div class="be-img-comment">
+            <a href="blog-detail-2.html">
+                <img src="image/User_Avatar_2.png" alt="" class="be-ava-comment">
+            </a>
+        </div>
+        <div class="be-comment-content">
+              <span class="be-comment-name">
+                <p><%=comments.user%></p></span>
+              <p class="be-comment-text"><%=comments.commenti%></p>
+        </div>
+         <%   })   %>
+    </div>
+</div>
+<div style="text-align: center;margin: auto;font-size: 1.3rem;line-height: 1.5;font-weight: bold;">
+  <p><a href="/signup">Signup</a> o <a href="/login">Login</a> per lasciare un commento</p>
+</div>
+</div>
     <footer class="w-section" id="footer">
       <i class="fab fa-twitter download-class2"></i>
       <i class="fab fa-facebook-f download-class2"></i>
