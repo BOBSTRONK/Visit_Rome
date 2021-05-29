@@ -147,11 +147,12 @@
               <!--Body-->
               <form
                 class="text-center border borders p-5"
+                id="form"
                 action="/signup"
                 method="POST"
               >
                 <p class="h3 mb-4 whitetext">Sign up</p>
-
+                <div id="error"></div>
                 <div class="form-row mb-4">
                   <div class="col">
                     <!-- First name -->
@@ -201,7 +202,7 @@
                   id="defaultRegisterFormPasswordHelpBlock"
                   class="form-text whitetext mb-4"
                 >
-                  Reconmended at least 8 characters and 1 digit
+                  At least 8 characters,1 digit and 1 upperCase
                 </small>
 
                 <!-- confirm password -->
@@ -252,17 +253,6 @@
     </div>
     <!-- Full Page Intro -->
     <script src="js/multimodals.js" charset="utf-8"></script>
-    <script>
-      document.querySelector(".btn").onclick = function () {
-        var password = document.querySelector(".password").value;
-        var confirmPassword = document.querySelector(".confirmPassword").value;
-
-        if (password != confirmPassword) {
-          window.alert("Password didn't match try again.");
-          return false;
-        }
-        return true;
-      };
-    </script>
+    <script src="js/validate.js" charset="utf-8"></script>
   </body>
 </html>
